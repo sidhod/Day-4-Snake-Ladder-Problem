@@ -6,6 +6,8 @@
  * Repeat till the Player reaches the winning position 100.
  * position moves below 0, then the player restarts from 0.
  * Set Winning position user position 100
+ * Print No of Times Dice Rolls
+ * Position of Player
  */
 package Basics;
 import java.util.*;
@@ -13,7 +15,7 @@ public class SnakeAndLadder {
 	public static void main(String[] args) {
 		SnakeAndLadder obj = new SnakeAndLadder();
 		int startPosition=0;
-		int temp=0;
+		int noTimesDieRolls=0;
 	int userPosition = 0;
 		int n=0;
 		String sGame = "r";
@@ -31,14 +33,24 @@ public class SnakeAndLadder {
     	
     	while(sGame.equals ("r") || sGame.equals ("R")){
     	int DieValue = (int) ((Math.random()*(7-1)) + 1);
+    	noTimesDieRolls=noTimesDieRolls+1;
     	userPosition=userPosition+DieValue;
     	userPosition= obj.checkCases(userPosition,DieValue);
     	
-        displayOutput(userPosition,DieValue,playerName);
+        displayOutput(userPosition,DieValue,playerName,noTimesDieRolls);
          if (userPosition == 100)
         {
         	sGame="s";
-            System.out.println ("YOU WON, GOOD JOB!!!");
+        	 System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+        	System.out.println(""
+        			+ "---------Total No Dies Rolls: "+noTimesDieRolls+"--------------\r\n"
+        			+ "    #      # ###### ##  ##   ##     ## ## ###    ##      \r\n"
+        			+ " *   #    #  ##  ## ##  ##   ##     ## ## ## #   ##     *\r\n"
+        			+ "***    ##    ##  ## ##  ##   ##  #  ## ## ##  #  ##    ***\r\n"
+        			+ " *     ##    ##  ## ##  ##   ## # # ## ## ##   # ##     *\r\n"
+        			+ "       ##    ###### ######   ###   ### ## ##     ##       \r\n"
+        			+ "-------------------SNAKE AND LADDER GAME-----------------------\r\n");
+            
             
         }
          else {
@@ -52,12 +64,13 @@ public class SnakeAndLadder {
         
     	}
 	}
-   static void displayOutput(int userPosition,int DieValue,String playerName){
+   static void displayOutput(int userPosition,int DieValue,String playerName,int noTimesDieRolls){
 	   System.out.println("---------------------------------------------------------------------------------------------------------------------------");
     	System.out.println("Die Thrown Value: "+ DieValue);
         System.out.println ("\t\t\t\t\t-------------------------------");
         System.out.println ("\t\t\t\t\t|      You Rolled a: " + DieValue + "         |");
-        System.out.println ("\t\t\t\t\t| Player Position("+playerName+"): " + userPosition + "      |");// print the roll the user got
+        System.out.println ("\t\t\t\t\t| Player Position("+playerName+"): " + userPosition + "      |");
+        System.out.println ("\t\t\t\t\t| No Of Times Die Rolls: " + noTimesDieRolls + "     |");
         System.out.println ("\t\t\t\t\t-------------------------------");
         
 		
